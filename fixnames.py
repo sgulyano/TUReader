@@ -39,7 +39,7 @@ def fix_name(word):
                     if word.startswith(a):
                         word = word[len(a):]
                         DONE = False
-                        print('start with ', a)
+                        #print('start with ', a)
                         break
             if not DONE:
                 break
