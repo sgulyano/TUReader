@@ -2,6 +2,8 @@
 
 เพื่อแก้ปัญหารายชื่อผู้ทรงคุณวุฒิไม่ถูกต้องหรือไม่อัพเดท
 
+รายงาน: https://docs.google.com/document/d/1xSaFy0oCc7h-y6Uv_cXug0EitN2mI6liZGbRXIPh_-8/edit?usp=sharing
+
 ---
 ## Instruction
 * รัน readTUfile.ipynb
