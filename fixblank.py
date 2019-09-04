@@ -8,3 +8,7 @@ def fixblankname(df, cols):
     nanidx = np.where(counts > 1)[0]
     badidx = (uidx[:,np.newaxis] == nanidx).any(axis=1)
     return df[idxany | badidx]
+
+def rmblankname(df, cols):
+    idxall = df[cols].isna().all(axis=1)
+    return df[~idxall]
