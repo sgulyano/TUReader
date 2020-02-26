@@ -1,18 +1,19 @@
 from string import punctuation, whitespace
 
 ranks = {'ศาสตราจารย์':['ศาสตรจารย์', 'ศาสตราจารย์', 'ศาสตร์ตราจารย์', 'Professor','ศ.(AIT)','ศ.(มจธ.)','ศ.(มทม.)','ศ.(มทส.)','ศ.(มวล.)','ศ.*','ศ.','ศ*','ศ'], 
-         'ศาสตราจารย์เกียรติคุณ':['ศาสตราจารย์ กิตติคุณ'], 
+         'ศาสตราจารย์เกียรติคุณ':[''], 
+         'ศาสตราจารย์กิตติคุณ':['ศาสตราจารย์ กิตติคุณ'], 
          'รองศาสตราจารย์':["รองศาสตร์ตราจารย์", "Associate Professor",'รศ.'],
          "ผู้ช่วยศาสตราจารย์" : ['Assistant Professor','ผศ.','รด.','รศ.ดร.'],
          "ศาสตราจารย์ (พิเศษ)" : ["ศาสตราจารย์พิเศษ",'ศ.พิเศษ']}
 
 def fixranks(word):
-    return fixword(word, ranks)
+    return fixword_exact_match(word, ranks)
 
 phd = {'ดร.':['ดร','Dr.'] }
 
 def fixphd(word):
-    return fixword(word, phd)
+    return fixword_exact_match(word, phd)
 
 status = {'เกษียณ':['กษ.','0','(เกษียณ)','เกษียณ (ต่ออายุ ราชการ)','เกษียณ (ต่อเวลา ราชการ)','เกษียณ (อาจารย์ พิเศษ)','เกษียณ วุฒิสมาชิก','เกษียน'],
           'ลาออก':['ลาออก (พำนักอยู่ อังกฤษ)', 'ลาออก(อยู่ต่างประเทศ)'],
@@ -145,3 +146,10 @@ def fixword(word, vocab):
         if word in value:
             return key
     return word
+
+def fixword_exact_match(word, vocab):
+    word = word.strip()
+    for key, value in vocab.items():
+        if word in [key]+value:
+            return key
+    return ''
